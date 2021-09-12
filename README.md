@@ -28,7 +28,7 @@
   
 </a>
   
-<a href='https://portfolio.kimdonghee.dev/'>
+<a href='https://portfolio.kimdonghee.dev/projects/'>
   
 <img src='https://img.shields.io/badge/PORTOLIO-yellow?style=for-the-badge'>
   
