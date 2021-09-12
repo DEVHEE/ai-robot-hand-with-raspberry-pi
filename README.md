@@ -1,18 +1,18 @@
-# AI Robot Hand with Raspberry Pi
+<h1 align="center">🤖 AI Robot Hand with Raspberry Pi</h1>
 
-<br />
+<h3 align="center"><strong>A robotics hand that mimics human hands using Computer Vision</strong></h1>
+
+![preview-crop](https://user-images.githubusercontent.com/46535278/132984747-09d74565-d2ef-4d48-a31e-11a7b0df6df0.jpeg)
+
+---
 
 <div align="center">
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-red.svg)](https://opensource.org/licenses/MIT)
-[![PyPI status](https://img.shields.io/badge/Statis-in%20progress-yellow.svg)]()
+[![Status](https://img.shields.io/badge/Status-in%20progress-yellow.svg)]()
 [![Python 3.8.10](https://img.shields.io/badge/python-3.8.10-blue.svg)](https://www.python.org/downloads/release/python-380/)
-[![made-with-opencv](http://img.shields.io/badge/OpenCV-5c3ee8?style=square&logo=OpenCV&logoColor=white)]()
-[![Raspberry Pi](http://img.shields.io/badge/Raspberry%20Pi-c51a4a?style=square&logo=Raspberry-Pi&logoColor=white)]()
-
-[![made-with-python](http://ForTheBadge.com/images/badges/made-with-python.svg)](https://www.python.org/)
-[![built-with-love](http://ForTheBadge.com/images/badges/built-with-love.svg)](https://GitHub.com/DEVHEE/)
-[![cc-nc-sa](http://ForTheBadge.com/images/badges/cc-nc-sa.svg)](https://creativecommons.org/licenses/by-nc-sa/4.0)
+[![made-with-opencv](http://img.shields.io/badge/OpenCV-5c3ee8?style=square&logo=OpenCV&logoColor=white)](https://opencv.org/)
+[![Raspberry Pi](http://img.shields.io/badge/Raspberry%20Pi-c51a4a?style=square&logo=Raspberry-Pi&logoColor=white)](https://www.raspberrypi.org/)
 
 </div>
 
