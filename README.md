@@ -57,22 +57,26 @@
 ## 🗂 Folder Structure
 
     .
+    ├── hardware
+    │   └── circuit diagram
+    │       ├── AI Robot Hand with Raspberry Pi Circuit Diagram.fzz
+    │       └── AI Robot Hand with Raspberry Pi Circuit Diagram.png
     ├── resource
-    │   ├── library
-    │   │   └── mediapipe-0.8.4-cp38-cp38-linux_aarch64
-    │   └── software
-    │       ├── assets
-    │       │   ├── image
-    │       │   │   ├── img-hand1.jpg
-    │       │   │   ├── img-hand2.jpg
-    │       │   │   └── img-hand3.jpg
-    │       │   └── video
-    │       │       ├── vid-hand1.mp4
-    │       │       ├── vid-hand2.mp4
-    │       │       └── vid-hand3.mp4
-    │       └── main_video.py
+    │   └── library
+    │       └── mediapipe-0.8.4-cp38-cp38-linux_aarch64
+    ├── software
+    │   ├── assets
+    │   │   ├── image
+    │   │   │   ├── img-hand1.jpg
+    │   │   │   ├── img-hand2.jpg
+    │   │   │   └── img-hand3.jpg
+    │   │   └── video
+    │   │       ├── vid-hand1.mp4
+    │   │       ├── vid-hand2.mp4
+    │   │       └── vid-hand3.mp4
+    │   └── main_video.py
     ├── .gitattributes
-    ├── .gitignore
+    ├── .gitginore
     ├── LICENSE
     └── README.md
 
