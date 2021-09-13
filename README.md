@@ -72,7 +72,7 @@
     │       │       └── vid-hand3.mp4
     │       └── main_video.py
     ├── .gitattributes
-    ├── .gitginore
+    ├── .gitignore
     ├── LICENSE
     └── README.md
 
