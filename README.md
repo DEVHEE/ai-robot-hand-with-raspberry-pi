@@ -57,6 +57,22 @@
 ## 🗂 Folder Structure
 
     .
+    ├── resource
+    │   ├── library
+    │   │   └── mediapipe-0.8.4-cp38-cp38-linux_aarch64
+    │   └── software
+    │       ├── assets
+    │       │   ├── image
+    │       │   │   ├── img-hand1.jpg
+    │       │   │   ├── img-hand2.jpg
+    │       │   │   └── img-hand3.jpg
+    │       │   └── video
+    │       │       ├── vid-hand1.mp4
+    │       │       ├── vid-hand2.mp4
+    │       │       └── vid-hand3.mp4
+    │       └── main_video.py
+    ├── .gitattributes
+    ├── .gitginore
     ├── LICENSE
     └── README.md
 
