@@ -21,17 +21,17 @@
 <div align='center'>
   
 ### Quick Links
-  
-<a href='https://kimdonghee.dev/categories/robot/'>
-  
-<img src='https://img.shields.io/badge/BLOG%20POST-blue?style=for-the-badge'>
-  
+
+<a href='https://ai-robot-hand-with-raspberry-pi.kimdonghee.dev/'>
+<img src='https://img.shields.io/badge/DOCUMENT-orange?style=for-the-badge'>
 </a>
-  
+
+<a href='https://kimdonghee.dev/categories/robot/'>
+<img src='https://img.shields.io/badge/BLOG%20POST-blue?style=for-the-badge'>
+</a>
+
 <a href='https://portfolio.kimdonghee.dev/projects/'>
-  
 <img src='https://img.shields.io/badge/PORTOLIO-yellow?style=for-the-badge'>
-  
 </a>
   
 </div>
@@ -43,6 +43,7 @@
 ```markdown
 # TODO
 Update development environment
+Update project documents
 ```
 
 ## 📎 Table of Contents
@@ -52,6 +53,16 @@ Update development environment
   * [Licensing](#-licensing)
 
 ## 📑 Project Documents
+
+<a href='https://ai-robot-hand-with-raspberry-pi.kimdonghee.dev/'>
+<img src='https://img.shields.io/badge/DOCUMENT-orange?style=for-the-badge'>
+</a>
+
+- null
+
+<a href='https://kimdonghee.dev/categories/robot/'>
+<img src='https://img.shields.io/badge/BLOG%20POST-blue?style=for-the-badge'>
+</a>
 
 -   <a href='https://kimdonghee.dev/posts/Projects_Robot_AI-Robot-Hand-with-Raspberry-Pi-1-구상/'>Robot / AI Robot Hand with Raspberry Pi - 1. Map out</a>
 -   <a href='https://kimdonghee.dev/posts/Projects_Robot_AI-Robot-Hand-with-Raspberry-Pi-2-전자제어-연구/'>Robot / AI Robot Hand with Raspberry Pi - 2. Electronic Control Research</a>
