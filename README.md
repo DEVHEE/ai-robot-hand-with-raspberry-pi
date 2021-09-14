@@ -65,19 +65,32 @@ Update development environment
     │       ├── AI Robot Hand with Raspberry Pi Circuit Diagram.fzz
     │       └── AI Robot Hand with Raspberry Pi Circuit Diagram.png
     ├── resource
+    │   ├── environment
+    │   │   └── Miniconda3-latest-Linux-aarch64
     │   └── library
     │       └── mediapipe-0.8.4-cp38-cp38-linux_aarch64
     ├── software
-    │   ├── assets
-    │   │   ├── image
-    │   │   │   ├── img-hand1.jpg
-    │   │   │   ├── img-hand2.jpg
-    │   │   │   └── img-hand3.jpg
-    │   │   └── video
-    │   │       ├── vid-hand1.mp4
-    │   │       ├── vid-hand2.mp4
-    │   │       └── vid-hand3.mp4
-    │   └── main_video.py
+    │   ├── hand-recongition
+    │   │   ├── assets
+    │   │   │   ├── image
+    │   │   │   │   ├── img-hand1.jpg
+    │   │   │   │   ├── img-hand2.jpg
+    │   │   │   │   └── img-hand3.jpg
+    │   │   │   └── video
+    │   │   │       ├── vid-hand1.mp4
+    │   │   │       ├── vid-hand2.mp4
+    │   │   │       └── vid-hand3.mp4
+    │   │   └── main_handRecognition.py
+    │   └── text-recognition
+    │       ├── assets
+    │       │   ├── image
+    │       │   │   └── test.png
+    │       │   └── temp
+    │       ├── result
+    │       │   └── tts
+    │       │       ├── string.txt
+    │       │       └── tts.mp3
+    │       └── main_textRecognition.py
     ├── .gitattributes
     ├── .gitginore
     ├── LICENSE
