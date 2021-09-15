@@ -130,83 +130,99 @@ with handsModule.Hands(
                     cv2.line(black, topPoint_list[p], topPoint_list[p+1], (0, 255, 255), 2)
                 
                 # Save points of each finger.
-                points_list = []
-                for i in range (1, 5):
-                    pos_1 = [topPoint_list[i]]
-                    pos_2 = [secondPoint_list[i]]
-                    pos_3 = [thirdPoint_list[i]]
-                    pos_4 = [bottomPoint_list[i]]
+                level_list = []
+                for i in range (5):
+                    lvl0 = [topPoint_list[i]]
+                    lvl1 = [secondPoint_list[i]]
+                    lvl2 = [thirdPoint_list[i]]
+                    lvl3 = [bottomPoint_list[i]]
                     
-                    points_list.append([pos_1, pos_2, pos_3, pos_4])
+                    level_list.append([lvl0, lvl1, lvl2, lvl3])
                 
-                # points_list
+                # level_list
                 # [
+                # [[#0 finger top], [#0 finger second], [#0 finger third], [#0 finger bottom]],
                 # [[#1 finger top], [#1 finger second], [#1 finger third], [#1 finger bottom]],
                 # [[#2 finger top], [#2 finger second], [#2 finger third], [#2 finger bottom]],
                 # [[#3 finger top], [#3 finger second], [#3 finger third], [#3 finger bottom]],
                 # [[#4 finger top], [#4 finger second], [#4 finger third], [#4 finger bottom]]
                 # ]
                 
-                # Assign points of each finger.
-                pos_1_top = points_list[0][0]
-                pos_1_second = points_list[0][1]
-                pos_1_third = points_list[0][2]
+                # Assign level of each finger point.
+                fin0_lvl0 = level_list[0][0]
+                fin0_lvl1 = level_list[0][1]
+                fin0_lvl2 = level_list[0][2]
+                fin0_lvl3 = level_list[0][3]
                 
-                pos_2_top = points_list[1][0]
-                pos_2_second = points_list[1][1]
-                pos_2_third = points_list[1][2]
+                fin1_lvl0 = level_list[1][0]
+                fin1_lvl1 = level_list[1][1]
+                fin1_lvl2 = level_list[1][2]
+                fin1_lvl3 = level_list[1][3]
                 
-                pos_3_top = points_list[2][0]
-                pos_3_second = points_list[2][1]
-                pos_3_third = points_list[2][2]
+                fin2_lvl0 = level_list[2][0]
+                fin2_lvl1 = level_list[2][1]
+                fin2_lvl2 = level_list[2][2]
+                fin2_lvl3 = level_list[2][3]
                 
-                pos_4_top = points_list[3][0]
-                pos_4_second = points_list[3][1]
-                pos_4_third = points_list[3][2]
+                fin3_lvl0 = level_list[3][0]
+                fin3_lvl1 = level_list[3][1]
+                fin3_lvl2 = level_list[3][2]
+                fin3_lvl3 = level_list[3][3]
 
-                # Calculate each finger bended.
-                pos_1_TS= map(lambda x, y: map(lambda i, j: i-j, x, y), pos_1_top, pos_1_second)
-                result_pos_1_TS = [tuple(i) for i in pos_1_TS][0][1]
-                pos_1_ST= map(lambda x, y: map(lambda i, j: i-j, x, y), pos_1_second, pos_1_third)
-                result_pos_1_ST = [tuple(i) for i in pos_1_ST][0][1]
+                fin4_lvl0 = level_list[4][0]
+                fin4_lvl1 = level_list[4][1]
+                fin4_lvl2 = level_list[4][2]
+                fin4_lvl3 = level_list[4][3]
+
+                """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+                # [START] Calculate the finger movement status.
+                """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+                fin1_L01 = map(lambda x, y: map(lambda i, j: i-j, x, y), fin1_lvl0, fin1_lvl1)
+                result_fin1_L01 = [tuple(i) for i in fin1_L01][0][1]
+                fin1_L12 = map(lambda x, y: map(lambda i, j: i-j, x, y), fin1_lvl1, fin1_lvl2)
+                result_fin1_L12 = [tuple(i) for i in fin1_L12][0][1]
                 
-                pos_2_TS= map(lambda x, y: map(lambda i, j: i-j, x, y), pos_2_top, pos_2_second)
-                result_pos_2_TS = [tuple(i) for i in pos_2_TS][0][1]
-                pos_2_ST= map(lambda x, y: map(lambda i, j: i-j, x, y), pos_2_second, pos_2_third)
-                result_pos_2_ST = [tuple(i) for i in pos_2_ST][0][1]
+                fin2_L01 = map(lambda x, y: map(lambda i, j: i-j, x, y), fin2_lvl0, fin2_lvl1)
+                result_fin2_L01 = [tuple(i) for i in fin2_L01][0][1]
+                fin2_L12 = map(lambda x, y: map(lambda i, j: i-j, x, y), fin2_lvl1, fin2_lvl2)
+                result_fin2_L12 = [tuple(i) for i in fin2_L12][0][1]
                 
-                pos_3_TS= map(lambda x, y: map(lambda i, j: i-j, x, y), pos_3_top, pos_3_second)
-                result_pos_3_TS = [tuple(i) for i in pos_3_TS][0][1]
-                pos_3_ST= map(lambda x, y: map(lambda i, j: i-j, x, y), pos_3_second, pos_3_third)
-                result_pos_3_ST = [tuple(i) for i in pos_3_ST][0][1]
+                fin3_L01 = map(lambda x, y: map(lambda i, j: i-j, x, y), fin3_lvl0, fin3_lvl1)
+                result_fin3_L01 = [tuple(i) for i in fin3_L01][0][1]
+                fin3_L12 = map(lambda x, y: map(lambda i, j: i-j, x, y), fin3_lvl1, fin3_lvl2)
+                result_fin3_L12 = [tuple(i) for i in fin3_L12][0][1]
                 
-                pos_4_TS= map(lambda x, y: map(lambda i, j: i-j, x, y), pos_4_top, pos_4_second)
-                result_pos_4_TS = [tuple(i) for i in pos_4_TS][0][1]
-                pos_4_ST= map(lambda x, y: map(lambda i, j: i-j, x, y), pos_4_second, pos_4_third)
-                result_pos_4_ST = [tuple(i) for i in pos_4_ST][0][1]
+                fin4_L01 = map(lambda x, y: map(lambda i, j: i-j, x, y), fin4_lvl0, fin4_lvl1)
+                result_fin4_L01 = [tuple(i) for i in fin4_L01][0][1]
+                fin4_L12 = map(lambda x, y: map(lambda i, j: i-j, x, y), fin4_lvl1, fin4_lvl2)
+                result_fin4_L12 = [tuple(i) for i in fin4_L12][0][1]
                 
                 # Print bended finger
-                if (result_pos_1_TS > 0 and result_pos_1_ST > 0):
-                    changed_pos_1 = "o"
+                if (result_fin1_L01 > 0 and result_fin1_L12 > 0):
+                    changed_fin1 = "o"
                 else:
-                    changed_pos_1 = "I"
+                    changed_fin1 = "I"
                     
-                if (result_pos_2_TS > 0 and result_pos_2_ST > 0):
-                    changed_pos_2 = "o"
+                if (result_fin2_L01 > 0 and result_fin2_L12 > 0):
+                    changed_fin2 = "o"
                 else:
-                    changed_pos_2 = "I"
+                    changed_fin2 = "I"
                     
-                if (result_pos_3_TS > 0 and result_pos_3_ST > 0):
-                    changed_pos_3 = "o"
+                if (result_fin3_L01 > 0 and result_fin3_L12 > 0):
+                    changed_fin3 = "o"
                 else:
-                    changed_pos_3 = "I"
+                    changed_fin3 = "I"
                     
-                if (result_pos_4_TS > 0 and result_pos_4_ST > 0):
-                    changed_pos_4 = "o"
+                if (result_fin4_L01 > 0 and result_fin4_L12 > 0):
+                    changed_fin4 = "o"
                 else:
-                    changed_pos_4 = "I"
+                    changed_fin4 = "I"
                     
-                print(changed_pos_1 + changed_pos_2 + changed_pos_3 + changed_pos_4)
+                print(changed_fin1 + changed_fin2 + changed_fin3 + changed_fin4)
+                
+                """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+                # [END] Calculate the finger movement status.
+                """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
                 # Save each landmark keypoints.
                 keypoints = []
