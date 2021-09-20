@@ -3,13 +3,13 @@ ai-robot-hand-with-raspberry-pi
 COPYRIGHT © 2021 KIM DONGHEE. ALL RIGHTS RESERVED.
 """
 
-# import modules
+#Import modules.
 import cv2
 import mediapipe as mp
 import numpy as np
 import time
 
-# setting modules
+# Setting modules.
 drawModule = mp.solutions.drawing_utils
 handsModule = mp.solutions.hands
 
