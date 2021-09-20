@@ -3,7 +3,7 @@ ai-robot-hand-with-raspberry-pi
 COPYRIGHT © 2021 KIM DONGHEE. ALL RIGHTS RESERVED.
 """
 
-#Import modules.
+# Import modules.
 import cv2
 import mediapipe as mp
 import numpy as np
