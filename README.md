@@ -58,15 +58,18 @@ Update project documents
 <img src='https://img.shields.io/badge/DOCUMENT-orange?style=for-the-badge'>
 </a>
 
-- null
+-   <a href='https://ai-robot-hand-with-raspberry-pi.kimdonghee.dev/'>Introduction</a>
+-   <a href='https://ai-robot-hand-with-raspberry-pi.kimdonghee.dev/getting-started'>Getting Started</a>
+-   <a href='https://ai-robot-hand-with-raspberry-pi.kimdonghee.dev/'>1. Map out</a>
+-   <a href='https://ai-robot-hand-with-raspberry-pi.kimdonghee.dev/'>2. Electronic Control Research</a>
 
 <a href='https://kimdonghee.dev/categories/robot/'>
 <img src='https://img.shields.io/badge/BLOG%20POST-blue?style=for-the-badge'>
 </a>
 
--   <a href='https://kimdonghee.dev/posts/Projects_Robot_AI-Robot-Hand-with-Raspberry-Pi-1-구상/'>Robot / AI Robot Hand with Raspberry Pi - 1. Map out</a>
--   <a href='https://kimdonghee.dev/posts/Projects_Robot_AI-Robot-Hand-with-Raspberry-Pi-2-전자제어-연구/'>Robot / AI Robot Hand with Raspberry Pi - 2. Electronic Control Research</a>
--   <a href='https://kimdonghee.dev/posts/Projects_Robot_AI-Robot-Hand-with-Raspberry-Pi-3-하드웨어-연구/'>Robot / AI Robot Hand with Raspberry Pi - 3. Hardware Research</a>
+-   <a href='https://kimdonghee.dev/posts/Projects_Robot_AI-Robot-Hand-with-Raspberry-Pi-1-구상/'>Robot / AI Robot Hand with Raspberry Pi - 1. 구상</a>
+-   <a href='https://kimdonghee.dev/posts/Projects_Robot_AI-Robot-Hand-with-Raspberry-Pi-2-전자제어-연구/'>Robot / AI Robot Hand with Raspberry Pi - 2. 전자제어 연구</a>
+-   <a href='https://kimdonghee.dev/posts/Projects_Robot_AI-Robot-Hand-with-Raspberry-Pi-3-하드웨어-연구/'>Robot / AI Robot Hand with Raspberry Pi - 3. 하드웨어 연구</a>
 
 ## 🗂 Folder Structure
 
@@ -92,6 +95,25 @@ Update project documents
     │   │   │       ├── vid-hand2.mp4
     │   │   │       └── vid-hand3.mp4
     │   │   └── main_handRecognition.py
+    │   ├── mask-recognition
+    │   │   ├── assets
+    │   │   │   ├── mask_1.png
+    │   │   │   ├── mask_2.png
+    │   │   │   ├── no_mask_1.png
+    │   │   │   └── no_mask_2.png
+    │   │   ├── dataset
+    │   │   │   ├── with_mask
+    │   │   │   │   └── ...
+    │   │   │   └── without_mask
+    │   │   │       └── ...
+    │   │   ├── face_recognizer
+    │   │   │   ├── deploy.prototxt
+    │   │   │   └── res10_300x300_ssd_iter_140000.caffemodel
+    │   │   ├── loss_acc_plot.png
+    │   │   ├── main_maskRecongition_image.py
+    │   │   ├── main_maskRecongition_video.py
+    │   │   ├── mask_recognizer.model
+    │   │   └── train_maskRecongition.py
     │   └── text-recognition
     │       ├── assets
     │       │   ├── image
