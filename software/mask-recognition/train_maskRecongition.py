@@ -4,7 +4,7 @@ COPYRIGHT © 2021 KIM DONGHEE. ALL RIGHTS RESERVED.
 """
 
 '''
-Used datase: https://www.kaggle.com/omkargurav/face-mask-dataset
+Used dataset: https://www.kaggle.com/omkargurav/face-mask-dataset
 '''
 
 # Import modules.
