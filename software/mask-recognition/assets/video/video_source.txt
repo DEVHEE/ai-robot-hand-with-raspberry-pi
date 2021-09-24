@@ -1,0 +1,5 @@
+[SOURCE OF CDC_mask_480 and CDC_mask_720 VIDEOS]
+
+CHANNEL: Centers for Disease Control and Prevention (CDC)
+TITLE: Know How to Wear Your Face Mask Correctly
+URL: https://www.youtube.com/watch?v=dSvff0QljHQ

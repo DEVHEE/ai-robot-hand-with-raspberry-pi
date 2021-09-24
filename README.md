@@ -80,9 +80,9 @@ Update project documents
     │       └── AI Robot Hand with Raspberry Pi Circuit Diagram.png
     ├── resource
     │   ├── environment
-    │   │   └── Miniconda3-latest-Linux-aarch64
+    │   │   └── Miniconda3-latest-Linux-aarch64.sh
     │   └── library
-    │       └── mediapipe-0.8.4-cp38-cp38-linux_aarch64
+    │       └── mediapipe-0.8.4-cp38-cp38-linux_aarch64.sh
     ├── software
     │   ├── hand-recongition
     │   │   ├── assets
@@ -97,10 +97,15 @@ Update project documents
     │   │   └── main_handRecognition.py
     │   ├── mask-recognition
     │   │   ├── assets
-    │   │   │   ├── mask_1.png
-    │   │   │   ├── mask_2.png
-    │   │   │   ├── no_mask_1.png
-    │   │   │   └── no_mask_2.png
+    │   │   │   ├── image
+    │   │   │   │   ├── mask_1.png
+    │   │   │   │   ├── mask_2.png
+    │   │   │   │   ├── no_mask_1.png
+    │   │   │   │   └── no_mask_2.png
+    │   │   │   └── video
+    │   │   │       ├── CDC_mask_480.mp4
+    │   │   │       ├── CDC_mask_720.mp4
+    │   │   │       └── video_source.txt
     │   │   ├── dataset
     │   │   │   ├── with_mask
     │   │   │   │   └── ...
@@ -112,13 +117,15 @@ Update project documents
     │   │   ├── loss_acc_plot.png
     │   │   ├── main_maskRecongition_image.py
     │   │   ├── main_maskRecongition_video.py
-    │   │   ├── mask_recognizer.model
+    │   │   ├── main_maskRecongition.ipynb
+    │   │   ├── maskRecognizer.model
     │   │   └── train_maskRecongition.py
     │   └── text-recognition
     │       ├── assets
     │       │   ├── image
     │       │   │   └── test.png
     │       │   └── temp
+    │       │       └── .keep
     │       ├── result
     │       │   └── tts
     │       │       ├── string.txt

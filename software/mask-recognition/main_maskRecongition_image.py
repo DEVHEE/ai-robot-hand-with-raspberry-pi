@@ -5,7 +5,7 @@ COPYRIGHT © 2021 KIM DONGHEE. ALL RIGHTS RESERVED.
 
 '''
 USAGE
-python main_maskRecongition_image.py --image asstes/mask_1.png
+python main_maskRecongition_image.py --image asstes/image/mask_1.png
 '''
 
 # Import modules.
@@ -25,7 +25,7 @@ ap.add_argument("-f", "--face", type=str,
     default="face_recognizer",
     help="the path of face recognizer model directory")
 ap.add_argument("-m", "--model", type=str,
-    default="mask_recognizer.model",
+    default="maskRecognizer.model",
     help="the path of trained face mask recognizer model")
 ap.add_argument("-c", "--confidence", type=float, default=0.5,
     help="minimum probability to filter weak recognitions")
@@ -59,7 +59,7 @@ print("Computing face recognitions...")
 net.setInput(blob)
 recognitions = net.forward()
 
-# Loop over the recognitions
+# Loop over the recognitions.
 for i in range(0, recognitions.shape[2]):
     # Extract the confidence (i.e., probability) associated with the recognition.
     confidence = recognitions[0, 0, i, 2]

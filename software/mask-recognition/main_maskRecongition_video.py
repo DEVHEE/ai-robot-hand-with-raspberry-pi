@@ -15,7 +15,7 @@ from tensorflow.keras.applications.mobilenet_v2 import preprocess_input
 from tensorflow.keras.preprocessing.image import img_to_array
 from tensorflow.keras.models import load_model
 
-def detect_and_predict_mask(frame, faceNet, maskNet):
+def recognize_and_predict_mask(frame, faceNet, maskNet):
     # Hold the dimensions of the frame and then create a block in the frame.
     (h, w) = frame.shape[:2]
     blob = cv2.dnn.blobFromImage(
@@ -35,13 +35,11 @@ def detect_and_predict_mask(frame, faceNet, maskNet):
 
     # Loop over the recognitions.
     for i in range(0, recognitions.shape[2]):
-
         # Extract the confidence (like probability) related to recognition.
         confidence = recognitions[0, 0, i, 2]
 
         # Filter weak recognition by checking whether the confidence is greater than the minimum confidence.
         if confidence > args["confidence"]:
-
             # Calculate the (x, y) coordinates of the bounding box for the object.
             box = recognitions[0, 0, i, 3:7] * np.array([w, h, w, h])
             (startX, startY, endX, endY) = box.astype("int")
@@ -61,7 +59,7 @@ def detect_and_predict_mask(frame, faceNet, maskNet):
             faces.append(face)
             locs.append((startX, startY, endX, endY))
 
-    # Only make a predictions if at least one face was detected
+    # Only make a predictions if at least one face was recognized.
     if len(faces) > 0:
         # For faster inference we'll make batch predictions on all faces at the same time rather than one-by-one predictions in the above `for` loop.
         faces = np.array(faces, dtype="float32")
@@ -76,7 +74,7 @@ ap.add_argument("-f", "--face", type=str,
     default="face_recognizer",
     help="the path of face recognizer model directory")
 ap.add_argument("-m", "--model", type=str,
-    default="mask_recognizer.model",
+    default="maskRecognizer.model",
     help="the path of trained face mask recognizer model")
 ap.add_argument("-c", "--confidence", type=float, default=0.5,
     help="minimum probability to filter weak recognitions")
@@ -104,18 +102,18 @@ while True:
     frame = vs.read()
     frame = imutils.resize(frame, width=400)
 
-    # Detect faces in the frame and determine if they are wearing a face mask or not.
-    (locs, preds) = detect_and_predict_mask(frame, faceNet, maskNet)
+    # Recognize faces in the frame and determine if they are wearing a face mask or not.
+    (locs, preds) = recognize_and_predict_mask(frame, faceNet, maskNet)
 
-    # Loop over the detected face locations and their corresponding locations.
+    # Loop over the recognized face locations and their corresponding locations.
     for (box, pred) in zip(locs, preds):
         # Unpack the bounding box and predictions.
         (startX, startY, endX, endY) = box
         (mask, withoutMask) = pred
 
         # Determine the class label and color we'll use to draw the bounding box and text.
-        label = "Mask" if mask > withoutMask else "No Mask"
-        color = (0, 255, 0) if label == "Mask" else (0, 0, 255)
+        label = "MASK" if mask > withoutMask else "NO MASK"
+        color = (0, 255, 0) if label == "MASK" else (0, 0, 255)
 
         # Include the probability in the label.
         label = "{}: {:.2f}%".format(label, max(mask, withoutMask) * 100)

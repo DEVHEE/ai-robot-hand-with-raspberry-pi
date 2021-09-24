@@ -37,7 +37,7 @@ ap.add_argument("-d", "--dataset", type=str, default="dataset",
 ap.add_argument("-p", "--plot", type=str, default="loss_acc_plot.png",
     help="the path of output loss/accuracy plot")
 ap.add_argument("-m", "--model", type=str,
-    default="mask_recognizer.model",
+    default="maskRecognizer.model",
     help="the path to output the face mask recognizer model")
 args = vars(ap.parse_args())
 
@@ -57,7 +57,7 @@ for imagePath in imagePaths:
     # Extract class labels from file names.
     label = imagePath.split(os.path.sep)[-2]
 
-    # load the 224x224 input image and preprocess it.
+    # Load the 224x224 input image and preprocess it.
     image = load_img(imagePath, target_size=(224, 224))
     image = img_to_array(image)
     image = preprocess_input(image)
@@ -66,7 +66,7 @@ for imagePath in imagePaths:
     data.append(image)
     labels.append(label)
 
-# Convert data and labels to NumPy array
+# Convert data and labels to NumPy array.
 data = np.array(data, dtype="float32")
 labels = np.array(labels)
 

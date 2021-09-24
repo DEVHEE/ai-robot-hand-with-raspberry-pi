@@ -1,3 +1,5 @@
 ai-robot-hand-with-raspberry-pi.code-workspace
 .DS_Store
-temp
+/temp
+archive
+!.keep
