@@ -19,7 +19,7 @@
 ---
 
 <div align='center'>
-  
+
 ### Quick Links
 
 <a href='https://ai-robot-hand-with-raspberry-pi.kimdonghee.dev/'>
@@ -31,7 +31,11 @@
 </a>
 
 <a href='https://portfolio.kimdonghee.dev/projects/'>
-<img src='https://img.shields.io/badge/PORTOLIO-yellow?style=for-the-badge'>
+<img src='https://img.shields.io/badge/PORTFOLIO-yellow?style=for-the-badge'>
+</a>
+
+<a href='https://colab.research.google.com/drive/1w7I8yGAaeVIxXkxoTj6KdLO33mSbWkmY'>
+<img src='https://img.shields.io/badge/Open%20in-Google Colab-blue?logo=Google-Colab&style=for-the-badge'>
 </a>
   
 </div>
