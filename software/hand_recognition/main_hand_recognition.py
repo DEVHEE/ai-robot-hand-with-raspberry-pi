@@ -8,10 +8,48 @@ import cv2
 import mediapipe as mp
 import numpy as np
 import time
+import Adafruit_PCA9685
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+# [START] Setting the Adafruit PCA9685 PWM controll function.
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+# Initialise the PCA9685 using the default address (0x40).
+pwm = Adafruit_PCA9685.PCA9685()
+
+# Configure min and max servo pulse lengths.
+servo_min = 80  # Min pulse length out of 4096.
+servo_max = 490  # Max pulse length out of 4096.
+
+# Configure 0, 90, 180 degress of servo pulse lengths.
+# 1 degree per 2.055
+servo_0 = 100  # 0 degress length out of 4096.
+servo_45 = round(192.5)  # 0 degress length out of 4096.
+servo_90 = 285  # 90 degress length out of 4096.
+servo_135 = round(377.5)  # 90 degress length out of 4096.
+servo_180 = 470  # 180 degress length out of 4096.
 
 # Setting modules.
 drawModule = mp.solutions.drawing_utils
 handsModule = mp.solutions.hands
+
+# Helper function to make setting a servo pulse width simpler.
+def set_servo_pulse(channel, pulse):
+    pulse_length = 1000000    # 1,000,000 us per second
+    pulse_length //= 50       # 50 Hz
+    print('{0}us per period'.format(pulse_length))
+    pulse_length //= 4096     # 12 bits of resolution
+    print('{0}us per bit'.format(pulse_length))
+    pulse *= 1000
+    pulse //= pulse_length
+    pwm.set_pwm(channel, 0, pulse)
+
+# Set frequency to 50 Hz.
+pwm.set_pwm_freq(50)
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+# [END] Setting the Adafruit PCA9685 PWM controll function.
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 cap = cv2.VideoCapture(0)  # To use webcam.
 # cap = cv2.VideoCapture("./assets/video/vid_hand-1.mp4")  # To use video.
@@ -198,22 +236,33 @@ with handsModule.Hands(
                 result_fin4_L12 = [tuple(i) for i in fin4_L12][0][1]
                 
                 # Print bended finger
-                if (result_fin1_L01 > 0 and result_fin1_L12 > 0):
+                if (result_fin1_L01 >= 0 and result_fin1_L12 > 0):
                     changed_fin1 = "o"
+                    pwm.set_pwm(0, 0, servo_0)
+                elif (result_fin1_L01 < 0 and result_fin1_L12 > 0):
+                    changed_fin1 = "o"
+                    pwm.set_pwm(0, 0, servo_0)
                 else:
                     changed_fin1 = "I"
+                    pwm.set_pwm(0, 0, servo_180)
                     
-                if (result_fin2_L01 > 0 and result_fin2_L12 > 0):
+                if (result_fin2_L01 >= 0 and result_fin2_L12 > 0):
+                    changed_fin2 = "o"
+                elif (result_fin2_L01 < 0 and result_fin2_L12 > 0):
                     changed_fin2 = "o"
                 else:
                     changed_fin2 = "I"
                     
-                if (result_fin3_L01 > 0 and result_fin3_L12 > 0):
+                if (result_fin3_L01 >= 0 and result_fin3_L12 > 0):
+                    changed_fin3 = "o"
+                elif (result_fin3_L01 < 0 and result_fin3_L12 > 0):
                     changed_fin3 = "o"
                 else:
                     changed_fin3 = "I"
                     
-                if (result_fin4_L01 > 0 and result_fin4_L12 > 0):
+                if (result_fin4_L01 >= 0 and result_fin4_L12 > 0):
+                    changed_fin4 = "o"
+                elif (result_fin4_L01 < 0 and result_fin4_L12 > 0):
                     changed_fin4 = "o"
                 else:
                     changed_fin4 = "I"
@@ -246,6 +295,7 @@ with handsModule.Hands(
         cv2.imshow('HAND DETECTION WITH LANDMARK - ORIGINAL', image)
         
         if cv2.waitKey(5) & 0xFF == 27:  # ESC
+            cv2.destroyAllWindows()
             break
         
 cap.release()
