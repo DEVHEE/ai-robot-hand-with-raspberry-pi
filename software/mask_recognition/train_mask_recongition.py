@@ -37,7 +37,7 @@ ap.add_argument("-d", "--dataset", type=str, default="dataset",
 ap.add_argument("-p", "--plot", type=str, default="loss_acc_plot.png",
     help="the path of output loss/accuracy plot")
 ap.add_argument("-m", "--model", type=str,
-    default="maskRecognizer.model",
+    default="mask_recognizer.model",
     help="the path to output the face mask recognizer model")
 args = vars(ap.parse_args())
 

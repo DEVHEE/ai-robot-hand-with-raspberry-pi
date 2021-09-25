@@ -34,7 +34,7 @@
 <img src='https://img.shields.io/badge/PORTFOLIO-yellow?style=for-the-badge'>
 </a>
 
-<a href='https://colab.research.google.com/drive/1w7I8yGAaeVIxXkxoTj6KdLO33mSbWkmY'>
+<a href='https://colab.research.google.com/drive/1c9eHH7eqkXDR4jI8MFaCQ0y1qAnw5RVH'>
 <img src='https://img.shields.io/badge/Open%20in-Google Colab-blue?logo=Google-Colab&style=for-the-badge'>
 </a>
   
@@ -79,33 +79,39 @@ Update project documents
 
     .
     ├── hardware
-    │   └── circuit diagram
-    │       ├── AI Robot Hand with Raspberry Pi Circuit Diagram.fzz
-    │       └── AI Robot Hand with Raspberry Pi Circuit Diagram.png
+    │   └── circuit-diagram
+    │       ├── AI_Robot_Hand_with_Raspberry_Pi_Circuit_Diagram.fzz
+    │       └── AI_Robot_Hand_with_Raspberry_Pi_Circuit_Diagram.png
     ├── resource
     │   ├── environment
-    │   │   └── Miniconda3-latest-Linux-aarch64.sh
+    │   │   └── Miniconda3_latest_Linux_aarch64.sh
     │   └── library
-    │       └── mediapipe-0.8.4-cp38-cp38-linux_aarch64.sh
+    │       └── mediapipe_0.8.4_cp38_cp38_linux_aarch64.whl
     ├── software
-    │   ├── hand-recongition
+    │   ├── embedded_saved
+    │   │   ├── pwm_on_8051
+    │   │   │   ├── example.c
+    │   │   │   └── example.s
+    │   │   ├── led_dimmer.c
+    │   │   └── test_pwm.c
+    │   ├── hand_recongition
     │   │   ├── assets
     │   │   │   ├── image
-    │   │   │   │   ├── img-hand1.jpg
-    │   │   │   │   ├── img-hand2.jpg
-    │   │   │   │   └── img-hand3.jpg
+    │   │   │   │   ├── img_hand-1.jpg
+    │   │   │   │   ├── img_hand-2.jpg
+    │   │   │   │   └── img_hand-3.jpg
     │   │   │   └── video
-    │   │   │       ├── vid-hand1.mp4
-    │   │   │       ├── vid-hand2.mp4
-    │   │   │       └── vid-hand3.mp4
-    │   │   └── main_handRecognition.py
-    │   ├── mask-recognition
+    │   │   │       ├── vid_hand-1.mp4
+    │   │   │       ├── vid_hand-2.mp4
+    │   │   │       └── vid_hand-3.mp4
+    │   │   └── main_hand_recognition.py
+    │   ├── mask_recognition
     │   │   ├── assets
     │   │   │   ├── image
-    │   │   │   │   ├── mask_1.png
-    │   │   │   │   ├── mask_2.png
-    │   │   │   │   ├── no_mask_1.png
-    │   │   │   │   └── no_mask_2.png
+    │   │   │   │   ├── mask-1.png
+    │   │   │   │   ├── mask-2.png
+    │   │   │   │   ├── no_mask-1.png
+    │   │   │   │   └── no_mask-2.png
     │   │   │   └── video
     │   │   │       ├── CDC_mask_480.mp4
     │   │   │       ├── CDC_mask_720.mp4
@@ -119,12 +125,12 @@ Update project documents
     │   │   │   ├── deploy.prototxt
     │   │   │   └── res10_300x300_ssd_iter_140000.caffemodel
     │   │   ├── loss_acc_plot.png
-    │   │   ├── main_maskRecongition_image.py
-    │   │   ├── main_maskRecongition_video.py
-    │   │   ├── main_maskRecongition.ipynb
-    │   │   ├── maskRecognizer.model
-    │   │   └── train_maskRecongition.py
-    │   └── text-recognition
+    │   │   ├── main_mask_recongition_image.py
+    │   │   ├── main_mask_recongition_video.py
+    │   │   ├── main_mask_recongition.ipynb
+    │   │   ├── mask_recognizer.model
+    │   │   └── train_mask_recongition.py
+    │   └── text_recognition
     │       ├── assets
     │       │   ├── image
     │       │   │   └── test.png
@@ -134,7 +140,7 @@ Update project documents
     │       │   └── tts
     │       │       ├── string.txt
     │       │       └── tts.mp3
-    │       └── main_textRecognition.py
+    │       └── main_text_recognition.py
     ├── .gitattributes
     ├── .gitginore
     ├── LICENSE
@@ -161,4 +167,4 @@ Update project documents
 
 The MIT License 2021 KIM DONGHEE
 
-<a href="https://github.com/DEVHEE"><img src="https://img.shields.io/static/v1?style=for-the-badge&label=CREATED%20BY&message=KIM%20DONGHEE&color=000000"></a>
+<a href="https://github.com/DEVHEE"><img src="https://img.shields.io/static/v1?style=for-the-badge&label=CREATED%20BY&message=KIM%20DONGHEE&color=000000"></a>  

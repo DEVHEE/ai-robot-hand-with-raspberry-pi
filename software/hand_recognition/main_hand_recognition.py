@@ -14,7 +14,7 @@ drawModule = mp.solutions.drawing_utils
 handsModule = mp.solutions.hands
 
 cap = cv2.VideoCapture(0)  # To use webcam.
-# cap = cv2.VideoCapture("./assets/video/vid-hand1.mp4")  # To use video.
+# cap = cv2.VideoCapture("./assets/video/vid_hand-1.mp4")  # To use video.
 
 prevTime = 0
 with handsModule.Hands(
@@ -25,7 +25,7 @@ with handsModule.Hands(
         ret, image = cap.read()
         
         if not ret:
-            print("[INFO] The frame does not exist.")
+            print("The frame does not exist.")
             continue  # for webcam.
             # break  # for video.
 

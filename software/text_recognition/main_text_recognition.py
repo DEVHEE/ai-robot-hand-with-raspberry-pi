@@ -122,7 +122,7 @@ def image():
                 # Display detected word under each bounding box.
                 cv2.putText(capImg_file, a[11], (x - 15, y), cv2.FONT_HERSHEY_PLAIN, 2, (0, 0, 255), 1)
     # Output the bounding box with the image.
-    cv2.imshow("Recognition Result - Image", capImg_file)
+    cv2.imshow("Recognition Output - Image", capImg_file)
     cv2.waitKey(0)
     tempFile = tempPath
     if os.path.isfile(tempFile):
@@ -158,7 +158,7 @@ def video():
                     # Display detected word under each bounding box.
                     cv2.putText(capVid_frames, a[11], (x - 15, y), cv2.FONT_HERSHEY_PLAIN, 2, (0, 0, 255), 1)
         # Output the bounding box with the image.
-        cv2.imshow("Recognition Result - Video", capVid_frames)
+        cv2.imshow("Recognition Output - Video", capVid_frames)
         if cv2.waitKey(1) & 0xFF == ord('q'):
             video.release()
             cv2.destroyAllWindows()

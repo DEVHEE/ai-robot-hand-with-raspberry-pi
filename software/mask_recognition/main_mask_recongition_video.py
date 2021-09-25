@@ -74,7 +74,7 @@ ap.add_argument("-f", "--face", type=str,
     default="face_recognizer",
     help="the path of face recognizer model directory")
 ap.add_argument("-m", "--model", type=str,
-    default="maskRecognizer.model",
+    default="mask_recognizer.model",
     help="the path of trained face mask recognizer model")
 ap.add_argument("-c", "--confidence", type=float, default=0.5,
     help="minimum probability to filter weak recognitions")
