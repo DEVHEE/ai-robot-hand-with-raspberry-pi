@@ -8,51 +8,22 @@ import cv2
 import mediapipe as mp
 import numpy as np
 import time
-import Adafruit_PCA9685
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-# [START] Setting the Adafruit PCA9685 PWM controll function.
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-# Initialise the PCA9685 using the default address (0x40).
-pwm = Adafruit_PCA9685.PCA9685()
-
-# Configure min and max servo pulse lengths.
-servo_min = 80  # Min pulse length out of 4096.
-servo_max = 490  # Max pulse length out of 4096.
-
-# Configure 0, 90, 180 degress of servo pulse lengths.
-# 1 degree per 2.055
-servo_0 = 100  # 0 degress length out of 4096.
-servo_45 = round(192.5)  # 0 degress length out of 4096.
-servo_90 = 285  # 90 degress length out of 4096.
-servo_135 = round(377.5)  # 90 degress length out of 4096.
-servo_180 = 470  # 180 degress length out of 4096.
+# Import custom moduels.
+import modules.pca9685 as pca9685
+import modules.utils as utils
 
 # Setting modules.
 drawModule = mp.solutions.drawing_utils
 handsModule = mp.solutions.hands
 
-# Helper function to make setting a servo pulse width simpler.
-def set_servo_pulse(channel, pulse):
-    pulse_length = 1000000    # 1,000,000 us per second
-    pulse_length //= 50       # 50 Hz
-    print('{0}us per period'.format(pulse_length))
-    pulse_length //= 4096     # 12 bits of resolution
-    print('{0}us per bit'.format(pulse_length))
-    pulse *= 1000
-    pulse //= pulse_length
-    pwm.set_pwm(channel, 0, pulse)
-
-# Set frequency to 50 Hz.
-pwm.set_pwm_freq(50)
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-# [END] Setting the Adafruit PCA9685 PWM controll function.
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
 cap = cv2.VideoCapture(0)  # To use webcam.
 # cap = cv2.VideoCapture("./assets/video/vid_hand-1.mp4")  # To use video.
+
+# Initialize lambda coordinates of saved fingers.
+saved_fin1_L01 = 0
+saved_fin1_L12 = 0
+saved_fin1_L23 = 0
 
 prevTime = 0
 with handsModule.Hands(
@@ -94,7 +65,7 @@ with handsModule.Hands(
                     drawModule.DrawingSpec(
                         color=(0, 255, 0),
                         thickness=-1,
-                        circle_radius=6),
+                        circle_radius=3),
                     drawModule.DrawingSpec(
                         color=(243, 51, 255),
                         thickness=2,
@@ -108,7 +79,7 @@ with handsModule.Hands(
                     drawModule.DrawingSpec(
                         color=(0, 255, 0),
                         thickness=-1,
-                        circle_radius=6),
+                        circle_radius=3),
                     drawModule.DrawingSpec(
                         color=(243, 51, 255),
                         thickness=2,
@@ -119,6 +90,7 @@ with handsModule.Hands(
                 secondPoint_list = []
                 thirdPoint_list = []
                 bottomPoint_list = []
+                wristPoint_list = []
                 for point in handsModule.HandLandmark:
                     normalizedLandmark = hand_landmarks.landmark[point]
                     pixelCoordinatesLandmark = drawModule._normalized_to_pixel_coordinates(
@@ -156,16 +128,18 @@ with handsModule.Hands(
                         else:
                             bottomPoint_list.append(pixelCoordinatesLandmark)
                     
+                    # Save wrist coordinate.
+                    if (idx == 0):
+                        if (pixelCoordinatesLandmark == None):
+                            wristPoint_list.append((0, 0))
+                        else:
+                            wristPoint_list.append(pixelCoordinatesLandmark)
+                    
                     # Draw landmark index.
                     image = cv2.putText(image, f'IDX: {int(idx)}', pixelCoordinatesLandmark, cv2.FONT_HERSHEY_PLAIN, 1, (192, 61, 0), 1)
                     black = cv2.putText(black, f'IDX: {int(idx)}', pixelCoordinatesLandmark, cv2.FONT_HERSHEY_PLAIN, 1, (255, 255, 0), 1)
                     
                     idx += 1
-                
-                # Draw lines between the top points of landmarks.
-                for p in range(0, len(topPoint_list)-1):
-                    cv2.line(image, topPoint_list[p], topPoint_list[p+1], (0, 255, 255), 2)
-                    cv2.line(black, topPoint_list[p], topPoint_list[p+1], (0, 255, 255), 2)
                 
                 # Save points of each finger.
                 level_list = []
@@ -211,67 +185,35 @@ with handsModule.Hands(
                 fin4_lvl1 = level_list[4][1]
                 fin4_lvl2 = level_list[4][2]
                 fin4_lvl3 = level_list[4][3]
+                
+                wrist_lvl = wristPoint_list[0]
 
-                """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-                # [START] Calculate the finger movement status.
-                """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-                fin1_L01 = map(lambda x, y: map(lambda i, j: i-j, x, y), fin1_lvl0, fin1_lvl1)
-                result_fin1_L01 = [tuple(i) for i in fin1_L01][0][1]
-                fin1_L12 = map(lambda x, y: map(lambda i, j: i-j, x, y), fin1_lvl1, fin1_lvl2)
-                result_fin1_L12 = [tuple(i) for i in fin1_L12][0][1]
+                # Calculate the joints distance of fingers.
+                result_fin0_L01 = utils.calcJoint(fin0_lvl0, fin0_lvl1)
+                result_fin0_L12 = utils.calcJoint(fin0_lvl1, fin0_lvl2)
+                result_fin0_L23 = utils.calcJoint(fin0_lvl2, fin0_lvl3)
                 
-                fin2_L01 = map(lambda x, y: map(lambda i, j: i-j, x, y), fin2_lvl0, fin2_lvl1)
-                result_fin2_L01 = [tuple(i) for i in fin2_L01][0][1]
-                fin2_L12 = map(lambda x, y: map(lambda i, j: i-j, x, y), fin2_lvl1, fin2_lvl2)
-                result_fin2_L12 = [tuple(i) for i in fin2_L12][0][1]
+                result_fin1_L01 = utils.calcJoint(fin1_lvl0, fin1_lvl1)
+                result_fin1_L12 = utils.calcJoint(fin1_lvl1, fin1_lvl2)
+                result_fin1_L23 = utils.calcJoint(fin1_lvl2, fin1_lvl3)
                 
-                fin3_L01 = map(lambda x, y: map(lambda i, j: i-j, x, y), fin3_lvl0, fin3_lvl1)
-                result_fin3_L01 = [tuple(i) for i in fin3_L01][0][1]
-                fin3_L12 = map(lambda x, y: map(lambda i, j: i-j, x, y), fin3_lvl1, fin3_lvl2)
-                result_fin3_L12 = [tuple(i) for i in fin3_L12][0][1]
+                result_fin2_L01 = utils.calcJoint(fin2_lvl0, fin2_lvl1)
+                result_fin2_L12 = utils.calcJoint(fin2_lvl1, fin2_lvl2)
+                result_fin2_L23 = utils.calcJoint(fin2_lvl2, fin2_lvl3)
                 
-                fin4_L01 = map(lambda x, y: map(lambda i, j: i-j, x, y), fin4_lvl0, fin4_lvl1)
-                result_fin4_L01 = [tuple(i) for i in fin4_L01][0][1]
-                fin4_L12 = map(lambda x, y: map(lambda i, j: i-j, x, y), fin4_lvl1, fin4_lvl2)
-                result_fin4_L12 = [tuple(i) for i in fin4_L12][0][1]
+                result_fin3_L01 = utils.calcJoint(fin3_lvl0, fin3_lvl1)
+                result_fin3_L12 = utils.calcJoint(fin3_lvl1, fin3_lvl2)
+                result_fin3_L23 = utils.calcJoint(fin3_lvl2, fin3_lvl3)
                 
-                # Print bended finger
-                if (result_fin1_L01 >= 0 and result_fin1_L12 > 0):
-                    changed_fin1 = "o"
-                    pwm.set_pwm(0, 0, servo_0)
-                elif (result_fin1_L01 < 0 and result_fin1_L12 > 0):
-                    changed_fin1 = "o"
-                    pwm.set_pwm(0, 0, servo_0)
-                else:
-                    changed_fin1 = "I"
-                    pwm.set_pwm(0, 0, servo_180)
-                    
-                if (result_fin2_L01 >= 0 and result_fin2_L12 > 0):
-                    changed_fin2 = "o"
-                elif (result_fin2_L01 < 0 and result_fin2_L12 > 0):
-                    changed_fin2 = "o"
-                else:
-                    changed_fin2 = "I"
-                    
-                if (result_fin3_L01 >= 0 and result_fin3_L12 > 0):
-                    changed_fin3 = "o"
-                elif (result_fin3_L01 < 0 and result_fin3_L12 > 0):
-                    changed_fin3 = "o"
-                else:
-                    changed_fin3 = "I"
-                    
-                if (result_fin4_L01 >= 0 and result_fin4_L12 > 0):
-                    changed_fin4 = "o"
-                elif (result_fin4_L01 < 0 and result_fin4_L12 > 0):
-                    changed_fin4 = "o"
-                else:
-                    changed_fin4 = "I"
-                    
-                print(changed_fin1 + changed_fin2 + changed_fin3 + changed_fin4)
+                result_fin4_L01 = utils.calcJoint(fin4_lvl0, fin4_lvl1)
+                result_fin4_L12 = utils.calcJoint(fin4_lvl1, fin4_lvl2)
+                result_fin4_L23 = utils.calcJoint(fin4_lvl2, fin4_lvl3)
                 
-                """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-                # [END] Calculate the finger movement status.
-                """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+                # Control servo motor by case.
+                pca9685.ctrlFin1(result_fin1_L01, result_fin1_L12)
+                pca9685.ctrlFin2(result_fin2_L01, result_fin2_L12)
+                pca9685.ctrlFin3(result_fin3_L01, result_fin3_L12)
+                pca9685.ctrlFin4(result_fin4_L01, result_fin4_L12)
 
                 # Save each landmark keypoints.
                 keypoints = []
@@ -282,6 +224,20 @@ with handsModule.Hands(
                          'Z': data_point.z,
                          'Visibility': data_point.visibility,
                          })
+                
+                for i in range (4):
+                    cv2.circle(image, level_list[0][i][0], 5, (73,73,255), 2)
+                    cv2.circle(image, level_list[1][i][0], 5, (56,182,255), 2)
+                    cv2.circle(image, level_list[2][i][0], 5, (38,255,255), 2)
+                    cv2.circle(image, level_list[3][i][0], 5, (60,214,0), 2)
+                    cv2.circle(image, level_list[4][i][0], 5, (244,255,96), 2)
+                    cv2.circle(image, wrist_lvl, 5, (255, 255, 255), 2)
+                    cv2.circle(black, level_list[0][i][0], 5, (73,73,255), 2)
+                    cv2.circle(black, level_list[1][i][0], 5, (56,182,255), 2)
+                    cv2.circle(black, level_list[2][i][0], 5, (38,255,255), 2)
+                    cv2.circle(black, level_list[3][i][0], 5, (60,214,0), 2)
+                    cv2.circle(black, level_list[4][i][0], 5, (244,255,96), 2)
+                    cv2.circle(black, wrist_lvl, 5, (255, 255, 255), 2)
         
         currTime = time.time()
         fps = 1 / (currTime - prevTime)
@@ -291,10 +247,46 @@ with handsModule.Hands(
         cv2.putText(image, f'FPS: {int(fps)}', (20, 70), cv2.FONT_HERSHEY_PLAIN, 3, (0, 0, 0), 2)
         cv2.putText(black, f'FPS: {int(fps)}', (20, 70), cv2.FONT_HERSHEY_PLAIN, 3, (255, 255, 255), 2)
         
+        # Dras hand safe rectangle.
+        cv2.rectangle(image, (imageWidth//2 - 150, imageHeight//2  - 150), (imageWidth//2 + 150, imageHeight//2 + 150), (255, 255, 255), 2) 
+        cv2.rectangle(black, (imageWidth//2 - 150, imageHeight//2  - 150), (imageWidth//2 + 150, imageHeight//2 + 150), (255, 255, 255), 2)
+        
         cv2.imshow('HAND DETECTION WITH LANDMARK - EXTRACT', black)
         cv2.imshow('HAND DETECTION WITH LANDMARK - ORIGINAL', image)
         
-        if cv2.waitKey(5) & 0xFF == 27:  # ESC
+        key = cv2.waitKey(5) & 0xFF
+        
+        if key == ord("s"):
+            saved_fin0_L01 = result_fin0_L01
+            saved_fin0_L12 = result_fin0_L12
+            saved_fin0_L23 = result_fin0_L23
+            
+            saved_fin1_L01 = result_fin1_L01
+            saved_fin1_L12 = result_fin1_L12
+            saved_fin1_L23 = result_fin1_L23
+            
+            saved_fin2_L01 = result_fin2_L01
+            saved_fin2_L12 = result_fin2_L12
+            saved_fin2_L23 = result_fin2_L23
+            
+            saved_fin3_L01 = result_fin3_L01
+            saved_fin3_L12 = result_fin3_L12
+            saved_fin3_L23 = result_fin3_L23
+            
+            saved_fin4_L01 = result_fin4_L01
+            saved_fin4_L12 = result_fin4_L12
+            saved_fin4_L23 = result_fin4_L23
+            
+            print("\n-----------------------------------------------------------")
+            print("Fingers coordinates saved.")
+            print(f"[Finger 0] IDX 8-7: ({saved_fin0_L01}) / IDX 7-6: ({saved_fin0_L12}) / IDX 6-5: ({saved_fin0_L23})")
+            print(f"[Finger 1] IDX 8-7: ({saved_fin1_L01}) / IDX 7-6: ({saved_fin1_L12}) / IDX 6-5: ({saved_fin1_L23})")
+            print(f"[Finger 2] IDX 8-7: ({saved_fin2_L01}) / IDX 7-6: ({saved_fin2_L12}) / IDX 6-5: ({saved_fin2_L23})")
+            print(f"[Finger 3] IDX 8-7: ({saved_fin3_L01}) / IDX 7-6: ({saved_fin3_L12}) / IDX 6-5: ({saved_fin3_L23})")
+            print(f"[Finger 4] IDX 8-7: ({saved_fin4_L01}) / IDX 7-6: ({saved_fin4_L12}) / IDX 6-5: ({saved_fin4_L23})")
+            print("-----------------------------------------------------------")
+
+        elif key == ord('q') or key == 27:  # Q or ESC
             cv2.destroyAllWindows()
             break
         
