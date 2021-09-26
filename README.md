@@ -86,6 +86,8 @@ Update project documents
     │   ├── environment
     │   │   └── Miniconda3_latest_Linux_aarch64.sh
     │   └── library
+    │       ├── Adafruit_Python_PCA9685
+    │       │   └── ...
     │       └── mediapipe_0.8.4_cp38_cp38_linux_aarch64.whl
     ├── software
     │   ├── embedded_saved
@@ -104,6 +106,15 @@ Update project documents
     │   │   │       ├── vid_hand-1.mp4
     │   │   │       ├── vid_hand-2.mp4
     │   │   │       └── vid_hand-3.mp4
+    │   │   ├── modules
+    │   │   │   ├── pca9685
+    │   │   │   │   ├── __init__.py
+    │   │   │   │   ├── pwm_control.py
+    │   │   │   │   └── pwm_settings.py
+    │   │   │   ├── utils
+    │   │   │   │   ├── __init__.py
+    │   │   │   │   └── calculate_joint.py
+    │   │   │   └── __init__.py
     │   │   └── main_hand_recognition.py
     │   ├── mask_recognition
     │   │   ├── assets
