@@ -85,10 +85,15 @@ Update project documents
     ├── resource
     │   ├── environment
     │   │   └── Miniconda3_latest_Linux_aarch64.sh
-    │   └── library
-    │       ├── Adafruit_Python_PCA9685
-    │       │   └── ...
-    │       └── mediapipe_0.8.4_cp38_cp38_linux_aarch64.whl
+    │   ├── library
+    │   │   ├── Adafruit_Python_PCA9685
+    │   │   │   └── ...
+    │   │   └── mediapipe_0.8.4_cp38_cp38_linux_aarch64.whl
+    │   └── testing
+    │       └── alpha_prototype_v0.1T
+    │           ├── alpha_prototype_v0.1T_1.MOV
+    │           ├── alpha_prototype_v0.1T_2.MOV
+    │           └── alpha_prototype_v0.1T_3.MOV
     ├── software
     │   ├── embedded_saved
     │   │   ├── pwm_on_8051
