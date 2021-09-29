@@ -110,6 +110,7 @@ Update project documents
     │   │   │   ├── pca9685
     │   │   │   │   ├── __init__.py
     │   │   │   │   ├── pwm_control.py
+    │   │   │   │   ├── pwm_init.py
     │   │   │   │   └── pwm_settings.py
     │   │   │   ├── utils
     │   │   │   │   ├── __init__.py
@@ -141,6 +142,9 @@ Update project documents
     │   │   ├── main_mask_recongition.ipynb
     │   │   ├── mask_recognizer.model
     │   │   └── train_mask_recongition.py
+    │   ├── pwm_test
+    │   │   ├── gpio_test.py
+    │   │   └── pca9685_test.py
     │   └── text_recognition
     │       ├── assets
     │       │   ├── image

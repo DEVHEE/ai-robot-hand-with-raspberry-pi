@@ -3,36 +3,30 @@ ai-robot-hand-with-raspberry-pi
 COPYRIGHT © 2021 KIM DONGHEE. ALL RIGHTS RESERVED.
 """
 
-# Import time module for delay.
+# Import modules.
 import time
-
-# Import the PCA9685 module.
 import Adafruit_PCA9685
-
-# Uncomment to enable debug output.
-# import logging
-# logging.basicConfig(level=logging.DEBUG)
 
 # Initialise the PCA9685 using the default address (0x40).
 device = Adafruit_PCA9685.PCA9685()
-
-# Alternatively specify a different address and/or bus:
-# pwm = Adafruit_PCA9685.PCA9685(address=0x41, busnum=2)
 
 # Configure min and max servo pulse lengths.
 servo_min = 80  # Min pulse length out of 4096.
 servo_max = 490  # Max pulse length out of 4096.
 
-# for 60 Hz
-# servo_min = 90  # Min pulse length out of 4096.
-# servo_max = 590  # Max pulse length out of 4096.
+# Configure 0, 90, 180 degrees of servo pulse lengths.
+# 1 degree per 2.055
+servo_180 = 100  # 180 degrees length out of 4096.
+servo_135 = round(192.5)  # 135 degrees length out of 4096.
+servo_90 = 285  # 90 degrees length out of 4096.
+servo_45 = round(377.5)  # 45 degrees length out of 4096.
+servo_0 = 470  # 0 degrees length out of 4096.
 
 
 # Helper function to make setting a servo pulse width simpler.
 def set_servo_pulse(channel, pulse):
     pulse_length = 1000000    # 1,000,000 us per second
     pulse_length //= 50       # 50 Hz
-    # pulse_length //= 60       # 60 Hz
     print('{0}us per period'.format(pulse_length))
     pulse_length //= 4096     # 12 bits of resolution
     print('{0}us per bit'.format(pulse_length))
@@ -44,13 +38,13 @@ def set_servo_pulse(channel, pulse):
 # Set frequency to 50 Hz.
 device.set_pwm_freq(50)
 
-# Set frequency to 60 Hz.
-# pwm.set_pwm_freq(50)
+# Initializing servo motor position.
+device.set_pwm(0, 0, servo_0)
+device.set_pwm(1, 0, servo_0)
+device.set_pwm(2, 0, servo_0)
 
-print('Moving servo on channel 0...')
-while True:
-    # Move servo on channel O between extremes.
-    device.set_pwm(0, 0, servo_min)
-    time.sleep(1)
-    device.set_pwm(0, 0, servo_max)
-    time.sleep(1)
+time.sleep(1)
+
+device.set_pwm(0, 0, servo_90)
+device.set_pwm(1, 0, servo_90)
+device.set_pwm(2, 0, servo_90)
