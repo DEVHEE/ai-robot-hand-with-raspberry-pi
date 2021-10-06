@@ -64,8 +64,9 @@ Update project documents
 
 -   <a href='https://ai-robot-hand-with-raspberry-pi.kimdonghee.dev/'>Introduction</a>
 -   <a href='https://ai-robot-hand-with-raspberry-pi.kimdonghee.dev/getting-started'>Getting Started</a>
--   <a href='https://ai-robot-hand-with-raspberry-pi.kimdonghee.dev/'>1. Map out</a>
--   <a href='https://ai-robot-hand-with-raspberry-pi.kimdonghee.dev/'>2. Electronic Control Research</a>
+-   <a href='https://ai-robot-hand-with-raspberry-pi.kimdonghee.dev/document/1-map-out'>1. Map out</a>
+-   <a href='https://ai-robot-hand-with-raspberry-pi.kimdonghee.dev/document/2-electronic-control-research'>2. Electronic Control Research</a>
+-   <a href='https://ai-robot-hand-with-raspberry-pi.kimdonghee.dev/document/3-hardware-research'>3. Hardware Research</a>
 
 <a href='https://kimdonghee.dev/categories/robot/'>
 <img src='https://img.shields.io/badge/BLOG%20POST-blue?style=for-the-badge'>
