@@ -117,12 +117,10 @@ with handsModule.Hands(max_num_hands=1,
                 wristPoint_list = []
                 for point in handsModule.HandLandmark:
                     normalizedLandmark = hand_landmarks.landmark[point]
-                    pixelCoordinatesLandmark = drawModule._normalized_to_pixel_coordinates(
-                        normalizedLandmark.x,
-                        normalizedLandmark.y,
-                        imageWidth,
-                        imageHeight
-                        )
+                    pixelCoordinatesLandmark = drawModule._normalized_to_pixel_coordinates(normalizedLandmark.x,
+                                                                                           normalizedLandmark.y,
+                                                                                           imageWidth,
+                                                                                           imageHeight)
 
                     # Save top points coordinate.
                     if idx == 4 or idx == 8 or idx == 12 or idx == 16 or idx == 20:

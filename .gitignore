@@ -2,5 +2,6 @@ ai-robot-hand-with-raspberry-pi.code-workspace
 .DS_Store
 .idea
 /temp
-archive
+/private
+/software/mask_recognition/archive
 !.keep

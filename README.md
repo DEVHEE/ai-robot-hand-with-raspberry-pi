@@ -83,17 +83,35 @@ Update project documents
     │       ├── AI_Robot_Hand_with_Raspberry_Pi_Circuit_Diagram.fzz
     │       └── AI_Robot_Hand_with_Raspberry_Pi_Circuit_Diagram.png
     ├── resource
+    │   ├── 3d_model
+    │   │   └── robot_hand
+    │   │       ├── finger
+    │   │       │   ├── fin_L01_1.STL
+    │   │       │   ├── fin_L01_2.STL
+    │   │       │   ├── fin_L01_3.STL
+    │   │       │   ├── fin_L12_1.STL
+    │   │       │   ├── fin_L12_2.STL
+    │   │       │   ├── fin_L12_3.STL
+    │   │       │   ├── fin_L23_1.STL
+    │   │       │   ├── fin_L23_2.STL
+    │   │       │   ├── fin_L23_3.STL
+    │   │       │   └── servo_gear.STL
+    │   │       └── LICENSE.txt
     │   ├── environment
     │   │   └── Miniconda3_latest_Linux_aarch64.sh
     │   ├── library
     │   │   ├── Adafruit_Python_PCA9685
     │   │   │   └── ...
+    │   │   ├── watson-streaming-stt
+    │   │   │   └── ...
     │   │   └── mediapipe_0.8.4_cp38_cp38_linux_aarch64.whl
     │   └── testing
-    │       └── alpha_prototype_v0.1T
-    │           ├── alpha_prototype_v0.1T_1.MOV
-    │           ├── alpha_prototype_v0.1T_2.MOV
-    │           └── alpha_prototype_v0.1T_3.MOV
+    │       ├── alpha_prototype_v0.1T
+    │       │   ├── alpha_prototype_v0.1T_1.MOV
+    │       │   ├── alpha_prototype_v0.1T_2.MOV
+    │       │   └── alpha_prototype_v0.1T_3.MOV
+    │       └── alpha_prototype_v0.2T
+    │           └── alpha_prototype_v0.2T.mp4
     ├── software
     │   ├── embedded_saved
     │   │   ├── pwm_on_8051
@@ -150,6 +168,19 @@ Update project documents
     │   ├── pwm_test
     │   │   ├── gpio_test.py
     │   │   └── pca9685_test.py
+    │   ├── speech_recognition
+    │   │   ├── modules
+    │   │   │   ├── pca9685
+    │   │   │   │   ├── __init__.py
+    │   │   │   │   ├── pwm_control.py
+    │   │   │   │   ├── pwm_init.py
+    │   │   │   │   └── pwm_settings.py
+    │   │   │   └── __init__.py
+    │   │   ├── main_speech_movement.py
+    │   │   ├── main_speech_recognition.py
+    │   │   ├── setup.py
+    │   │   ├── speech.cfg
+    │   │   └── text_output.txt
     │   └── text_recognition
     │       ├── assets
     │       │   ├── image
