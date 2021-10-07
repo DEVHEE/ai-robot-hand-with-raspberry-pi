@@ -46,14 +46,12 @@
 
 ```markdown
 # TODO
-Update development environment
 Update project documents
 ```
 
 ## 📎 Table of Contents
   * [Project Documents](#-project-documents)
   * [Folder Structure](#-folder-structure)
-  * [Development Environment](#-development-environment)
   * [Licensing](#-licensing)
 
 ## 📑 Project Documents
@@ -197,23 +195,6 @@ Update project documents
     ├── .gitginore
     ├── LICENSE
     └── README.md
-
-## 👨🏻‍💻 Development Environment
-
-### Devices
-
-- Raspberry Pi 4 Model B 4GB
-
-### System
-
-- macOS Monterey 12.0 Beta (21A5506) ARM
-- Windows 11 Pro 21H2
-- Ubuntu 20.04.3 LTS 64-bit ARM (ARMv8/AArch64)
-
-### Tools
-
-- PyCharm Professional
-- Visual Studio Code
 
 ## ⭐️ Licensing
 
