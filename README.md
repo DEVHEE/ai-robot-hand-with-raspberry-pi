@@ -34,7 +34,7 @@
 <img src='https://img.shields.io/badge/PORTFOLIO-yellow?style=for-the-badge'>
 </a>
 
-<a href='https://colab.research.google.com/drive/108pJCfenFAIM_Kj7k6OM-U6cRr-4QTwJ'>
+<a href='https://colab.research.google.com/drive/1lIUMgEGuxMQnUnG-7kwvn2p90z00Xy_m'>
 <img src='https://img.shields.io/badge/Open%20in-Google Colab-blue?logo=Google-Colab&style=for-the-badge'>
 </a>
   
