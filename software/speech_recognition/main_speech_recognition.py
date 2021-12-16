@@ -34,6 +34,7 @@ RECORD_SECONDS = 5
 FINALS = []
 LAST = None
 
+# There is a possibility of API server change, so you need to check Watson's document.
 REGION_MAP = {
     'us-south': 'stream.watsonplatform.net',
 }
