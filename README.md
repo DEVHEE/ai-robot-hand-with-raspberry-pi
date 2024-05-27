@@ -26,7 +26,7 @@
 <img src='https://img.shields.io/badge/DOCUMENT-orange?style=for-the-badge'>
 </a>
 
-<a href='https://kimdonghee.dev/categories/robot/'>
+<a href='https://blog.kimdonghee.dev/categories/robot/'>
 <img src='https://img.shields.io/badge/BLOG%20POST-blue?style=for-the-badge'>
 </a>
 
@@ -66,13 +66,13 @@
 -   <a href='https://ai-robot-hand-with-raspberry-pi.kimdonghee.dev/document/2-electronic-control-research'>2. Electronic Control Research</a>
 -   <a href='https://ai-robot-hand-with-raspberry-pi.kimdonghee.dev/document/3-hardware-research'>3. Hardware Research</a>
 
-<a href='https://kimdonghee.dev/categories/robot/'>
+<a href='https://blog.kimdonghee.dev/categories/robot/'>
 <img src='https://img.shields.io/badge/BLOG%20POST-blue?style=for-the-badge'>
 </a>
 
--   <a href='https://kimdonghee.dev/posts/Projects_Robot_AI-Robot-Hand-with-Raspberry-Pi-1-구상/'>Robot / AI Robot Hand with Raspberry Pi - 1. 구상</a>
--   <a href='https://kimdonghee.dev/posts/Projects_Robot_AI-Robot-Hand-with-Raspberry-Pi-2-전자제어-연구/'>Robot / AI Robot Hand with Raspberry Pi - 2. 전자제어 연구</a>
--   <a href='https://kimdonghee.dev/posts/Projects_Robot_AI-Robot-Hand-with-Raspberry-Pi-3-하드웨어-연구/'>Robot / AI Robot Hand with Raspberry Pi - 3. 하드웨어 연구</a>
+-   <a href='https://blog.kimdonghee.dev/posts/Projects_Robot_AI-Robot-Hand-with-Raspberry-Pi-1-구상/'>Robot / AI Robot Hand with Raspberry Pi - 1. 구상</a>
+-   <a href='https://blog.kimdonghee.dev/posts/Projects_Robot_AI-Robot-Hand-with-Raspberry-Pi-2-전자제어-연구/'>Robot / AI Robot Hand with Raspberry Pi - 2. 전자제어 연구</a>
+-   <a href='https://blog.kimdonghee.dev/posts/Projects_Robot_AI-Robot-Hand-with-Raspberry-Pi-3-하드웨어-연구/'>Robot / AI Robot Hand with Raspberry Pi - 3. 하드웨어 연구</a>
 
 ## 🗂 Folder Structure
 
