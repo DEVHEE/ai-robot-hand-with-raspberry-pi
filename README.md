@@ -1,6 +1,6 @@
 <h1 align="center">🤖 AI Robot Hand with Raspberry Pi</h1>
 
-<h3 align="center"><strong>A robotics hand that mimics human hands using Computer Vision</strong></h1>
+<h3 align="center"><strong>A robotics hand that mimics human hands using Computer Vision</strong></h3>
 
 ![preview-crop](https://user-images.githubusercontent.com/46535278/132984747-09d74565-d2ef-4d48-a31e-11a7b0df6df0.jpeg)
 
